@@ -1,0 +1,207 @@
+/* documentList.css */
+
+/* General */
+.document-title{
+    color: white;
+}
+.back-to-folders {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+.back-to-folders:hover {
+    color: #0056b3;
+}
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.document-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.document-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}
+
+.document-info {
+    margin-bottom: 10px;
+}
+
+.document-title {
+    font-weight: bold;
+    color: #fff;
+}
+
+.document-description {
+    color: #ddd;
+}
+
+.document-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.download-button,
+.delete-button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button {
+    background-color: #d9534f;
+}
+
+.download-button:hover,
+.delete-button:hover {
+    background-color:  #646cff;
+}
+
+/* File Versions */
+.file-versions {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.file-version-item {
+    border-top: 1px solid #555;
+    padding-top: 5px;
+    transition: background-color 0.3s;
+    display: flex;
+    gap: 10px;
+}
+
+.file-version-item:hover {
+    background-color: #444;
+}
+
+.version-label {
+    font-weight: bold;
+}
+
+.upload-date {
+    color: #bbb;
+}
+
+.create-document-form {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #444;
+    color: white;
+    max-width: 500px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #555;
+    color: white;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.submit-button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #4cae4c;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+}
+
+.file-input {
+    background-color: #555;
+    border: 1px solid #ccc;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+/* .upload-button {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+} */
+
+.upload-button:disabled {
+    background-color: #cccccc; /* Light gray */
+    cursor: default;
+    opacity: 0.5;
+}
+
+.upload-button:disabled:hover {
+  background-color: #cccccc;
+}

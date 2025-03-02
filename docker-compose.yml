@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432" 
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: filemanagement
+    volumes:
+      - postgres_data_filesystem:/var/lib/postgresql/data
+    networks:
+      - file-system
+
+  backend:
+    build: ./backend
+    ports:
+      - "5001:5001"
+    depends_on:
+      - db
+    env_file:
+      -  ./backend/.env
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - file-system
+        
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    stdin_open: true 
+
+networks:
+  file-system:
+
+volumes:
+  postgres_data_filesystem:
