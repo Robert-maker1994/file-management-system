@@ -43,13 +43,6 @@ export const seedDatabase = async () => {
 		});
 
 		await FileVersion.create({
-			filePath: "uploads/3/example2.txt",
-			version: 1,
-			documentId: doc1.id,
-			uploadDate: new Date(),
-		});
-
-		await FileVersion.create({
 			filePath: "uploads/2/cv.txt",
 			version: 1,
 			documentId: doc2.id,
@@ -57,7 +50,7 @@ export const seedDatabase = async () => {
 		});
 
 		await FileVersion.create({
-			filePath: "uploads/2/example.txt",
+			filePath: "uploads/3/example.txt",
 			version: 1,
 			documentId: doc3.id,
 			uploadDate: new Date(),

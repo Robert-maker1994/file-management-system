@@ -5,24 +5,10 @@ This project is a file management system that allows users to create, upload, do
 ## Features
 
 - **Folder Management**: Create, view, and delete folders.
-- **Document Management**: Create, view, upload, download, and delete documents within folders.
+- **Document Management**: Create, upload, download, and delete documents within folders.
 - **File Versioning**: Maintain multiple versions of documents.
 - **Health Check**: Endpoint to check the health status of the backend service.
 
-## Technologies Used
-
-### Backend
-
-- Node.js
-- Express
-- Sequelize (PostgreSQL)
-- TypeScript
-
-### Frontend
-
-- React
-- TypeScript
-- Axios
 
 ## Getting Started
 
@@ -47,4 +33,6 @@ This project is a file management system that allows users to create, upload, do
     ```
 
 3. Access the frontend application at `http://localhost:8080`.
+
+For more information travel to the respective readmes 
 

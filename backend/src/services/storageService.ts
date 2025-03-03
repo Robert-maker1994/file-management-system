@@ -9,8 +9,7 @@ interface StorageService {
 	deleteFile(filePath: string): Promise<void>;
 }
 
-
-class LocalStorageService implements StorageService {
+const localStorageService = {
 	async uploadFile(
 		file: Express.Multer.File,
 		documentId: string,
@@ -29,7 +28,7 @@ class LocalStorageService implements StorageService {
 		);
 		fs.writeFileSync(filePath, file.buffer);
 		return relativeFilePath;
-	}
+	},
 
 	async downloadFile(filePath: string): Promise<Readable> {
 		const fullPath = path.join(__dirname, "../../", filePath);
@@ -39,7 +38,7 @@ class LocalStorageService implements StorageService {
 		}
 
 		return fs.createReadStream(fullPath);
-	}
+	},
 
 	async deleteFile(filePath: string): Promise<void> {
 		const fullPath = path.join(__dirname, "../../", filePath);
@@ -48,9 +47,12 @@ class LocalStorageService implements StorageService {
 				fs.unlinkSync(fullPath);
 			}
 		} catch (error: any) {
-			throw new StorageServiceError(`Error deleting file: ${error.message}`, 500);
+			throw new StorageServiceError(
+				`Error deleting file: ${error.message}`,
+				500,
+			);
 		}
-	}
-}
+	},
+};
 
-export default LocalStorageService;
+export default localStorageService;

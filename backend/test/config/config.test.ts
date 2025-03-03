@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { loadConfig } from "../../src/config/config";
 import { ConfigError } from "../../src/errors";
 
@@ -34,13 +34,9 @@ describe("loadConfig", () => {
 		vi.stubEnv("PORT", "5001");
 		vi.stubEnv("PG_PORT", "5433");
 		try {
-			loadConfig()
+			loadConfig();
 		} catch (err) {
 			expect(err).toBeInstanceOf(ConfigError);
-			
-
 		}
 	});
-
-
 });

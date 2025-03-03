@@ -1,6 +1,6 @@
 import express from "express";
-import fileVersionService from "../services/fileVersionService";
 import { FileVersionError } from "../errors";
+import fileVersionService from "../services/fileVersionService";
 
 const fileVersionRouter = express.Router();
 
@@ -66,6 +66,5 @@ fileVersionRouter.delete("/:id", async (req, res, next) => {
 		next(error);
 	}
 });
-
 
 export default fileVersionRouter;

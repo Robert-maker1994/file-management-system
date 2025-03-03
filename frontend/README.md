@@ -2,10 +2,6 @@
 
 This directory contains the frontend code for the file management application.
 
-## Technologies Used
-
-*   React
-*   TypeScript
 
 ## Getting Started
 
@@ -32,4 +28,4 @@ This directory contains the frontend code for the file management application.
 *   `npm start`: Starts the development server.
 *   `npm test`: Runs the test suite.
 *   `npm run build`: Builds the application for production.
-* `npm run lint`: Runs the linter.
+*   `npm run lint`: Runs the linter.

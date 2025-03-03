@@ -1,12 +1,11 @@
 import { Sequelize } from "sequelize";
 import { loadConfig } from "../config/config";
+import { SequelizeConnection } from "../errors";
 import DocumentModel from "./document";
 import FileVersionModel from "./fileVersion";
 import FolderModel from "./folder";
-import { SequelizeConnection } from "../errors";
 
 const config = loadConfig();
-
 
 const datasource = new Sequelize(
 	config.database,

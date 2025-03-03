@@ -15,7 +15,10 @@ export function loadConfig() {
 
 		for (const [key, value] of Object.entries(config)) {
 			if (!value) {
-				throw new ConfigError(`Config Error please check your environment variables ${key}`, 500);
+				throw new ConfigError(
+					`Config Error please check your environment variables ${key}`,
+					500,
+				);
 			}
 		}
 		return {

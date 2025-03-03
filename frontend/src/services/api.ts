@@ -48,6 +48,7 @@ export const createDocument = async (title: string, description: string, folderI
   });
   return response.data;
 };
+
 export const deleteDocument = async (id: string) => {
   const response = await api.delete(`/documents/${id}`);
   return response.data;
@@ -67,25 +68,29 @@ export const uploadFile = async (documentId: string, file: File) => {
 export const downloadFile = async (documentId: string) => {
   const url =`/documents/${documentId}/download`;
 
-  const response = await api.get(url, { responseType: 'blob' });
-
+  const response = await api.get(url, { responseType: 'blob'});
+  
   const blob = new Blob([response.data]);
   const blobURL = window.URL.createObjectURL(blob);
-
-
+  
+  
   const link = document.createElement('a');
   link.href = blobURL;
 
-  const contentDisposition = response.headers['content-disposition'];
+  const contentDisposition = response.headers['content-disposition'];   console.log(contentDisposition, response.headers)
   let fileName = `document_${documentId}`;
+
   if (contentDisposition) {
     const fileNameMatch = contentDisposition.match(/filename="(.+)"/);
     if (fileNameMatch && fileNameMatch[1]) {
       fileName = fileNameMatch[1];
     }
   }
+
   link.setAttribute('download', fileName);
+
   document.body.appendChild(link);
+
   link.click();
 
   window.URL.revokeObjectURL(blobURL);

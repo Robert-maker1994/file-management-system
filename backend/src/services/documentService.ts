@@ -1,6 +1,7 @@
 import { DocumentServiceError } from "../errors";
 import { Document, Folder } from "../models/datasource";
-
+import fileVersionService from "./fileVersionService";
+import localStorageService from "./storageService";
 
 const documentService = {
 	createDocument: async (
@@ -45,14 +46,17 @@ const documentService = {
 
 	deleteDocument: async (id: string) => {
 		const document = await Document.findByPk(Number.parseInt(id));
-		console.log(document)
 		if (!document) {
 			throw new DocumentServiceError("Document not found", 404);
 		}
+		const fileVersions = await fileVersionService.getAllFileVersions(id);
+		for (const fileVersion of fileVersions) {
+			await fileVersionService.deleteFileVersion(fileVersion.id);
+			await localStorageService.deleteFile(fileVersion.filePath);
+		}
 
-		const d = await document.destroy();
-		console.log(d)
-		return true
+		await document.destroy();
+		return true;
 	},
 };
 

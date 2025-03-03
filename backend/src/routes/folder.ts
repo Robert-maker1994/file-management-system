@@ -23,19 +23,6 @@ folderRouter.get("/", async (req, res, next) => {
 	}
 });
 
-folderRouter.get("/:id", async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const folder = await folderService.getFolderById(id);
-		if (!folder) {
-			throw new CustomError("Folder not found", 404);
-		}
-		res.status(200).json(folder);
-	} catch (error) {
-		next(error);
-	}
-});
-
 folderRouter.delete("/:id", async (req, res, next) => {
 	try {
 		const { id } = req.params;

@@ -2,6 +2,7 @@ import { DataTypes, Model, type Sequelize } from "sequelize";
 
 export default (sequelize: Sequelize) => {
 	class FileVersion extends Model {
+		declare id: number;
 		declare version: number;
 		declare filePath: string;
 		declare uploadDate: Date;
@@ -9,6 +10,11 @@ export default (sequelize: Sequelize) => {
 
 	FileVersion.init(
 		{
+			id: {
+				type: DataTypes.INTEGER,
+				autoIncrement: true,
+				primaryKey: true,
+			},
 			filePath: {
 				type: DataTypes.STRING,
 				allowNull: false,

@@ -45,8 +45,8 @@ const FolderList = () => {
     }
 
     return (
-        <div>
-            <h2 className='.document-title'>Folders</h2>
+        <div >
+            <h2 className='document-title'>Folders</h2>
             <ul className='document-list'>
                 {folders?.map((folder) => (
                     <li className='document-item' key={folder.id}>

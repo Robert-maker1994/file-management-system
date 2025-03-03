@@ -1,5 +1,25 @@
 ## API Endpoints
 
+This is the backend component of a file management system that allows users to create, upload, download, and manage documents and folders. The system is built using Node.js, Express, and Sequelize, with PostgreSQL as the database.
+
+## Technologies Used
+
+This project leverages the following technologies:
+
+*   **Node.js:** 
+*   **Express.js:** 
+*   **Sequelize:** 
+*   **PostgreSQL:**
+*   **TypeScript:**
+*   **Multer:** 
+*   *CORS:** 
+*   **Method-Override:** 
+*   **Vitest:** 
+*   **Biome:** 
+*   **Docker:** 
+*   **Dotenv:** 
+*   **Reflect-metadata:** 
+
 ### Folders
 
 - `GET /folders`: Get all folders.
@@ -9,8 +29,6 @@
 ### Documents
 
 - `GET /documents?folderId=:folderId`: Get all documents in a folder.
-- `POST /documents`: Create a new document.
-- `DELETE /documents/:id`: Delete a document by ID.
 - `POST /documents/:id/upload`: Upload a new version of a document.
 - `GET /documents/:id/download`: Download the latest version of a document.
 

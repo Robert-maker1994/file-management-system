@@ -1,9 +1,6 @@
 import { FileVersionError } from "../errors";
 import { Document, FileVersion } from "../models/datasource";
 
-
-
-
 const fileVersionService = {
 	createFileVersion: async (
 		documentId: string,
@@ -55,16 +52,16 @@ const fileVersionService = {
 		return FileVersion.findByPk(Number.parseInt(id));
 	},
 
-	deleteFileVersion: async (id: string) => {
-		const fileVersion = await FileVersion.findByPk(Number.parseInt(id));
-		console.log(fileVersion)
+	deleteFileVersion: async (id: number) => {
+		const fileVersion = await FileVersion.findByPk(id);
+		console.log(fileVersion);
 		if (!fileVersion) {
 			throw new FileVersionError("File version not found", 404);
 		}
 
-		const d = await fileVersion.destroy();
-		console.log(d)
-		return true
+		await fileVersion.destroy();
+
+		return true;
 	},
 };
 

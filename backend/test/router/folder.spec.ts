@@ -1,10 +1,9 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import request from "supertest";
 import express from "express";
+import request from "supertest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { CustomError } from "../../errorHandle";
 import folderRouter from "../../src/routes/folder";
 import folderService from "../../src/services/folderService";
-import { Folder } from "../../src/models/datasource";
-import { CustomError } from "../../errorHandle";
 
 vi.mock("../../src/services/folderService");
 
@@ -22,7 +21,7 @@ describe("folderRouter", () => {
 			{ id: 1, name: "Folder 1", path: "/folder1" },
 			{ id: 2, name: "Folder 2", path: "/folder2" },
 		];
-	 vi.mocked	(folderService.getAllFolders ).mockResolvedValue(mockFolders);
+		vi.mocked(folderService.getAllFolders).mockResolvedValue(mockFolders);
 
 		const response = await request(app).get("/folders");
 
@@ -44,14 +43,12 @@ describe("folderRouter", () => {
 
 	it("should return 404 if folder not found", async () => {
 		vi.mocked(folderService.getFolderById).mockResolvedValue(null);
-        try {
-             await request(app).get("/folders/999");
-        } catch (response) {
-            expect(response.status).toBe(404);
-            expect(response.body.error).toBe("Folder not found");
-            expect(response.body.message).toBeInstanceOf(CustomError);
-
-        }
-
+		try {
+			await request(app).get("/folders/999");
+		} catch (response) {
+			expect(response.status).toBe(404);
+			expect(response.body.error).toBe("Folder not found");
+			expect(response.body.message).toBeInstanceOf(CustomError);
+		}
 	});
 });
