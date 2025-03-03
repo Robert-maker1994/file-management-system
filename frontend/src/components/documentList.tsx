@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getDocuments, createDocument, downloadFile, deleteDocument, uploadFile, getAllVersion } from '../services/api';
-import './documentList.css';
+import './document.css';
 
 interface Document {
     id: number;

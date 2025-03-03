@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getFolders, deleteFolder, Folder, createFolder } from '../services/api';
 import { Link } from "react-router"
-
-import "./documentList.css"
+import "./document.css"
 const FolderList = () => {
     const [folders, setFolders] = useState<Folder[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
