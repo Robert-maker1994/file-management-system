@@ -60,7 +60,7 @@ fileVersionRouter.get("/document/:documentId", async (req, res, next) => {
 fileVersionRouter.delete("/:id", async (req, res, next) => {
 	try {
 		const { id } = req.params;
-		await fileVersionService.deleteFileVersion(id);
+		await fileVersionService.deleteFileVersion(Number.parseInt(id));
 		res.status(204).send();
 	} catch (error) {
 		next(error);

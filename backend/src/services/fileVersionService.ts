@@ -63,6 +63,10 @@ const fileVersionService = {
 
 		return true;
 	},
+
+	getFileVersionByDocumentIdAndVersion: async (documentId: string, version: string): Promise<InstanceType<typeof FileVersion> | null> => {
+		return FileVersion.findOne({ where: { documentId: Number(documentId), version: Number(version) } });
+	},
 };
 
 export default fileVersionService;

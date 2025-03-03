@@ -59,6 +59,44 @@ documentRouter.post(
 );
 
 documentRouter.get(
+	"/:id/download/:version",
+	async (req: Request, res: Response, next: NextFunction) => {
+		const { id, version } = req.params;
+		try {
+			const fileVersion = await fileVersionService.getFileVersionByDocumentIdAndVersion(
+				id, version
+			);
+			if (!fileVersion) {
+				throw new DocumentError("No file found", 404);
+			}
+			const fileStream = await localStorageService.downloadFile(
+				fileVersion.filePath,
+			);
+			const filename =
+				fileVersion.filePath.split("/").pop() || `document_${id}`;
+
+			res.setHeader("Content-Type", "application/octet-stream");
+			res.setHeader(
+				"Content-Disposition",
+				`attachment; filename="${filename}"`,
+			);
+			res.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+			fileStream.pipe(res);
+
+			fileStream.on("error", (err) => {
+				console.error("Error during file streaming:", err);
+				next(err);
+			});
+
+			fileStream.on("end", () => {
+				console.log("File stream ended successfully");
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+);
+documentRouter.get(
 	"/",
 	async (req: Request, res: Response, next: NextFunction) => {
 		try {
