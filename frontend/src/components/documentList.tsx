@@ -157,11 +157,6 @@ const DocumentList: React.FC = () => {
                                             <li
                                                 key={version.id}
                                                 className="file-version-item"
-                                                onClick={() =>
-                                                    handleDownload(
-                                                        document.id.toString()
-                                                    )
-                                                }
                                             >
                                                 <span className="version-label">
                                                     Version {version.version}

@@ -1,6 +1,3 @@
-/* documentList.css */
-
-/* General */
 .document-title{
     color: white;
 }
@@ -81,7 +78,6 @@
     background-color:  #646cff;
 }
 
-/* File Versions */
 .file-versions {
     list-style: none;
     padding: 0;
@@ -98,10 +94,6 @@
     transition: background-color 0.3s;
     display: flex;
     gap: 10px;
-}
-
-.file-version-item:hover {
-    background-color: #444;
 }
 
 .version-label {
@@ -182,19 +174,6 @@ textarea {
     flex-direction: column;
     gap: 10px;
 }
-/* .upload-button {
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    
-} */
 
 .upload-button:disabled {
     background-color: #cccccc; /* Light gray */

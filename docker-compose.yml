@@ -7,10 +7,6 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: filemanagement
-    volumes:
-      - postgres_data_filesystem:/var/lib/postgresql/data
-    networks:
-      - file-system
 
   backend:
     build: ./backend
@@ -19,13 +15,7 @@ services:
     depends_on:
       - db
     env_file:
-      -  ./backend/.env
-    volumes:
-      - ./backend:/usr/src/app
-      - /usr/src/app/node_modules
-    networks:
-      - file-system
-        
+      -  ./backend/.env        
 
   frontend:
     build: ./frontend
@@ -33,9 +23,3 @@ services:
       - "8080:8080"
     depends_on:
       - backend
-
-networks:
-  file-system:
-
-volumes:
-  postgres_data_filesystem:
