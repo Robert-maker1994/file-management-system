@@ -11,6 +11,31 @@ import localStorageService from "../services/storageService";
 const documentRouter = express.Router();
 const upload = multer();
 
+documentRouter.post("/", upload.single("file"), async (req, res, next) => {
+	try {
+		const { title, description, folderId } = req.body;
+		if (req.file) {
+			const document = await documentService.createDocument(
+				title,
+				description,
+				folderId,
+			);
+			const filePath = await localStorageService.uploadFile(
+				req.file,
+				document.id.toString(),
+			);
+			await fileVersionService.createFileVersion(
+				document.id.toString(),
+				filePath,
+			);
+
+			res.status(201).send(document);
+		}
+	} catch (error) {
+		next(error);
+	}
+});
+
 documentRouter.post(
 	"/:id/upload",
 	upload.single("file"),

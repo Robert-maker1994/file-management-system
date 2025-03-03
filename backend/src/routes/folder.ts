@@ -1,5 +1,4 @@
 import express from "express";
-import { CustomError } from "../../errorHandle";
 import folderService from "../services/folderService";
 
 const folderRouter = express.Router();
